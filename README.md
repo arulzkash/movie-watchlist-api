@@ -111,14 +111,16 @@ The database consists of three main models managed by Prisma:
 ## 📂 Project Structure
 
 ```text
-├── src/
-│   ├── controllers/      # Request handlers
-│   ├── middleware/       # Auth & Error handling
-│   ├── routes/           # API Route definitions
-│   ├── utils/            # Helper functions (Validators, etc.)
-│   └── server.js         # App entry point
 ├── prisma/
-│   ├── schema.prisma     # Database modeling
-│   └── seed.js           # Seeding script
-├── .env                  # Environment variables
-└── package.json
+│   ├── schema.prisma      # Database modeling (Prisma)
+│   └── seed.js            # Seeding script for initial movie data
+├── src/
+│   ├── config/            # App configurations
+│   │   └── db.js          # Prisma Client initialization & connection
+│   ├── controllers/       # Request handlers (Business logic)
+│   ├── middleware/        # Authentication & Error handling middlewares
+│   ├── routes/            # API Route definitions
+│   ├── utils/             # Helper functions (e.g., generateToken.js)
+│   ├── validators/        # Zod schemas for request body validation
+│   └── server.js          # App entry point
+├── .env                   # Environment variables (Private)
