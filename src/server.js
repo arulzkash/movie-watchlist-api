@@ -1,6 +1,7 @@
 import express from "express";
 import {config} from "dotenv";
 import { connectDB, disconnectDB } from "./config/db.js";
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 // Import Routes
 import movieRoutes from "./routes/movieRoutes.js";
@@ -21,6 +22,9 @@ app.use('/movies', movieRoutes);
 app.use('/auth', authRoutes);
 app.use('/watchlist', watchlistRoutes);
 
+// Error handling
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = 5001;
 const server = app.listen(PORT, () => {
